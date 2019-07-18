@@ -11,25 +11,32 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+/*@Configuration
 @ConditionalOnClass({HttpClient.class})
-@EnableConfigurationProperties(HttpClientProperties.class)
+@EnableConfigurationProperties(HttpClientProperties.class)*/
+@ConditionalOnClass({HttpClient.class})
 public class HttpClientAutoConfiguration {
-    private final HttpClientProperties properties;
+
+
+
+
+
+
+   /* private final HttpClientProperties properties;
 
     public HttpClientAutoConfiguration(HttpClientProperties properties) {
         this.properties = properties;
     }
 
-    /**
+    *//**
      * httpclient bean的定义
      * @return
-     */
+     *//*
     @Bean
     @ConditionalOnMissingBean(HttpClient.class)
     public HttpClient httpClient(){
         RequestConfig requestConfig = RequestConfig.custom().setConnectionRequestTimeout(properties.getConnectTimeOut()).setSocketTimeout(properties.getSocketTimeOut()).build();
         HttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(requestConfig).setUserAgent(properties.getAgent()).setMaxConnPerRoute(properties.getMaxConnPerRoute()).setConnectionReuseStrategy(new NoConnectionReuseStrategy()).build();
         return client;
-    }
+    }*/
 }

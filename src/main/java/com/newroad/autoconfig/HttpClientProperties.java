@@ -2,10 +2,10 @@ package com.newroad.autoconfig;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "spring.httpclient")
+/*@ConfigurationProperties(prefix = "spring.httpclient")*/
 public class HttpClientProperties {
 
-    private Integer connectTimeOut=1000;
+   /* private Integer connectTimeOut=1000;
     private Integer socketTimeOut=10000;
     private String agent = "agent";
     private Integer maxConnPerRoute = 10;
@@ -50,4 +50,5 @@ public class HttpClientProperties {
     public void setMaxConnTotal(Integer maxConnTotal) {
         this.maxConnTotal = maxConnTotal;
     }
+}*/
 }
