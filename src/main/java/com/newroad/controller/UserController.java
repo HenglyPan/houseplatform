@@ -18,6 +18,9 @@ public class UserController {
     private UserServiceIf userService;
 
     @RequestMapping("user")
+
+
+    
     public List<User> getUsers(){
         return userService.getUsers();
     }
