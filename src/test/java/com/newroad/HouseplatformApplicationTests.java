@@ -21,7 +21,10 @@ public class HouseplatformApplicationTests {
 	public void contextLoads() {
 	}
 	@Test
-	public  void testHttpClient() throws ClientProtocolException,IOException{
-		System.out.println(EntityUtils.toString(httpClient.execute(new HttpGet("http://www.baidu.com")).getEntity()));
+	public void testHttpClient() throws IOException {
+        System.out.println(EntityUtils.toString(httpClient.execute(new HttpGet("http://www.baidu.com")).getEntity()));
+
 	}
+
+
 }

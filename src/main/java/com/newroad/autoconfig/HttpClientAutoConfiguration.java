@@ -11,32 +11,35 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/*@Configuration
-@ConditionalOnClass({HttpClient.class})
-@EnableConfigurationProperties(HttpClientProperties.class)*/
-@ConditionalOnClass({HttpClient.class})
+
+
+@Configuration
+@EnableConfigurationProperties(HttpClientProperties.class)
+@ConditionalOnClass({HttpClient.class})//当拥有HttpClient这个类时才起作用
 public class HttpClientAutoConfiguration {
-
-
-
-
-
-
-   /* private final HttpClientProperties properties;
-
+   private  final  HttpClientProperties properties;
     public HttpClientAutoConfiguration(HttpClientProperties properties) {
         this.properties = properties;
     }
 
-    *//**
-     * httpclient bean的定义
-     * @return
-     *//*
     @Bean
     @ConditionalOnMissingBean(HttpClient.class)
     public HttpClient httpClient(){
-        RequestConfig requestConfig = RequestConfig.custom().setConnectionRequestTimeout(properties.getConnectTimeOut()).setSocketTimeout(properties.getSocketTimeOut()).build();
-        HttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(requestConfig).setUserAgent(properties.getAgent()).setMaxConnPerRoute(properties.getMaxConnPerRoute()).setConnectionReuseStrategy(new NoConnectionReuseStrategy()).build();
+            //一、连接目标服务器超时时间：ConnectionTimeout-->指的是连接一个url的连接等待时间
+        RequestConfig config=RequestConfig.custom()
+                .setConnectionRequestTimeout(properties.getConnectTimeout())
+                //二、读取目标服务器数据超时时间：SocketTimeout-->指的是连接上一个url，获取response的返回等待时间
+                .setSocketTimeout(properties.getConnectTimeout()).build();
+        HttpClient client= HttpClientBuilder.create()
+         // 这个超时可以设置为客户端级别,作为所有请求的默认值：
+                .setDefaultRequestConfig(config).
+                        setUserAgent(properties.getAgent()).
+                        setMaxConnPerRoute(properties.getMaxConnPerRoute()).
+                        setConnectionReuseStrategy(new NoConnectionReuseStrategy()).build();
+
         return client;
-    }*/
+
+
+    }
+
 }
