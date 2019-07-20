@@ -10,7 +10,6 @@ import java.util.List;
 public class HelloController {
     @Autowired
     private UserServiceIf userService;
-
     @RequestMapping("hello")
     public String hello(ModelMap modelMap){
         List<User> users=userService.getUsers();
@@ -20,10 +19,7 @@ public class HelloController {
     }
 
     @RequestMapping("index")
-
     public String index(){
         return "homepage/index";
-
-
-        }
+          }
 }
