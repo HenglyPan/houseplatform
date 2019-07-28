@@ -14,6 +14,7 @@ public class HelloController {
     public String hello(ModelMap modelMap){
         List<User> users=userService.getUsers();
         User user = users.get(0);
+
         modelMap.put("user", user);
         return "hello";
     }
